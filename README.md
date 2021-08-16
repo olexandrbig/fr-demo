@@ -1,6 +1,7 @@
-ya# admin-area
+# admin-area
 
 ## Build Setup
+### Generating to docs and published in git pages via git settings
 
 ```bash
 # install dependencies
@@ -13,9 +14,8 @@ $ yarn dev
 $ yarn build
 $ yarn start
 
-# generate and deploy your static application
+# generate static
 $ yarn generate
-$ yarn deploy
 
 ```
 

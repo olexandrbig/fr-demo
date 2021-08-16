@@ -69,8 +69,7 @@ typings/
 .nuxt
 
 # Nuxt generate
-# disable next line to allow git page publish
-# dist
+dist
 
 # vuepress build output
 .vuepress/dist
