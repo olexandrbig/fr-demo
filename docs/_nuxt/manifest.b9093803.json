@@ -1,7 +1,7 @@
 {
   "name": "admin-area",
   "short_name": "admin-area",
-  "description": "ya# admin-area",
+  "description": "## Build Setup ### Generating to docs and published in git pages via git settings",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.e3e9fb.png",
