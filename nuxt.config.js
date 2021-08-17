@@ -2,8 +2,9 @@ export default {
   router: {
     mode: 'history'
   },
-  // Target: https://go.nuxtjs.dev/config-target
   mode: 'universal',
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
   generate: {
     dir: 'docs'
   },
