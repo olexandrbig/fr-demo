@@ -3,7 +3,7 @@ export default {
     mode: 'history'
   },
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'universal',
+  mode: 'universal',
   generate: {
     dir: 'docs'
   },
