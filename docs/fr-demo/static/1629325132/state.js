@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a,b,c){return {staticAssetsBase:"\u002Ffr-demo\u002Fstatic\u002F1629325132",layout:"default",error:a,state:{languages:[{title:"English",code:b}],locale:b,appVersion:"1.0.0"},serverRendered:true,routePath:c,config:{_app:{basePath:c,assetsPath:"\u002Ffr-demo\u002F",cdnURL:a},content:{dbHash:"101ab3bd"}}}}(null,"en","\u002F"));

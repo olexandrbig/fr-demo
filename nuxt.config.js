@@ -89,6 +89,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: '/fr-demo/'
+    publicPath: 'https://olexandrbig.github.io/fr-demo/'
   }
 }
