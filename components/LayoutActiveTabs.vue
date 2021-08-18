@@ -3,29 +3,29 @@
     <ul class="active-tab-list">
       <li class="active-tab">
         <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>Dashboard</span>
+          <span class="active-tab-icon"><fa :icon="['fas','th-large']" /></span>
+          <span>Overview</span>
         </a>
         <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
       </li>
       <li class="active-tab active">
         <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>Active item details</span>
+          <span class="active-tab-icon"><fa :icon="['fas','list']" /></span>
+          <span>Variants</span>
         </a>
         <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
       </li>
       <li class="active-tab">
         <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>Other John view</span>
+          <span class="active-tab-icon"><fa :icon="['fas','directions']" /></span>
+          <span>Turnout report</span>
         </a>
         <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
       </li>
       <li class="active-tab">
         <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>More available tabs</span>
+          <span class="active-tab-icon"><fa :icon="['fas','wind']" /></span>
+          <span>Cashflow report</span>
         </a>
         <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
       </li>

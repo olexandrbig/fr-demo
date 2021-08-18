@@ -2,7 +2,6 @@ export default {
   router: {
     mode: 'history'
   },
-  mode: 'universal',
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   generate: {
@@ -46,17 +45,21 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     ['nuxt-fontawesome', {
-      component: 'fa', //customize component name
+      component: 'fa', // customize component name
       imports: [{
         set: '@fortawesome/free-solid-svg-icons',
-        icons: ['faLightbulb','faTimes','faChevronDown','faChevronUp','faChevronRight']
+        icons: ['faLightbulb', 'faTimes', 'faChevronDown', 'faChevronUp', 'faChevronRight', 'faSearch',
+          'faBookOpen', 'faCrown', 'faUniversity', 'faUsers', 'faHeartbeat', 'faSignOutAlt', 'faList',
+          'faTasks', 'faBalanceScale', 'faBoxes', 'faThLarge', 'faPencilRuler', 'faFlag', 'faWind', 'faDirections']
       },
-        {set: '@fortawesome/free-brands-svg-icons',
-          icons: ['faGithub']
-        },
-        {set: '@fortawesome/free-regular-svg-icons',
-          icons: ['faLightbulb']
-        },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['faGithub']
+      },
+      {
+        set: '@fortawesome/free-regular-svg-icons',
+        icons: ['faLightbulb']
+      }
       ]
     }]
   ],

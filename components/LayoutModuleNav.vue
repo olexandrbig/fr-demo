@@ -1,65 +1,54 @@
 <template>
   <aside class="module-nav" :style="{height:`${mainHeight()}px`}">
     <div class="module-nav-inner">
-      <h1 class="module-nav-title">Module A</h1>
+      <h1 class="module-nav-title">
+        Module A
+      </h1>
     </div>
     <ul class="module-features">
       <li class="module-feature">
         <a href class="feature-link">
-          <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
+          <span class="feature-icon"><fa :icon="['fas','th-large']" /></span>
           <span>Overview</span>
         </a>
       </li>
       <li class="module-feature">
         <a href class="feature-link">
-          <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>Dashboard</span>
+          <span class="feature-icon"><fa :icon="['fas','boxes']" /></span>
+          <span>Product data</span>
           <span class="feature-expand pointer"><fa :icon="['fas','chevron-up']" /></span>
         </a>
         <ul class="module-sublist list-unstyled">
-          <li class="module-subfeature">
+          <li class="module-subfeature active">
             <a href class="feature-link">
-              <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-              <span>Dashboard</span>
+              <span class="feature-icon"><fa :icon="['fas','list']" /></span>
+              <span>Variants</span>
             </a>
           </li>
           <li class="module-subfeature">
             <a href class="feature-link">
-              <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-              <span>Dashboard</span>
+              <span class="feature-icon"><fa :icon="['fas','tasks']" /></span>
+              <span>Versions</span>
             </a>
           </li>
           <li class="module-subfeature">
             <a href class="feature-link">
-              <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li class="module-subfeature">
-            <a href class="feature-link">
-              <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-              <span>Dashboard</span>
+              <span class="feature-icon"><fa :icon="['fas','balance-scale']" /></span>
+              <span>Balance</span>
             </a>
           </li>
         </ul>
       </li>
       <li class="module-feature">
         <a href class="feature-link">
-          <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>Dashboard</span>
-          <span class="feature-expand pointer"><fa :icon="['fas','chevron-right']" /></span>
+          <span class="feature-icon"><fa :icon="['fas','pencil-ruler']" /></span>
+          <span>Drafts</span>
         </a>
       </li>
       <li class="module-feature">
         <a href class="feature-link">
-          <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>Dashboard</span>
-        </a>
-      </li>
-      <li class="module-feature">
-        <a href class="feature-link">
-          <span class="feature-icon"><fa :icon="['fas','lightbulb']" /></span>
-          <span>Dashboard</span>
+          <span class="feature-icon"><fa :icon="['fas','flag']" /></span>
+          <span>Reports</span>
           <span class="feature-expand pointer"><fa :icon="['fas','chevron-right']" /></span>
         </a>
       </li>
@@ -132,6 +121,7 @@ export default {
   display: inline-block;
   width: 100%;
 }
+.module-subfeature.active .feature-link,
 .feature-link:hover{
   background: #f5f5f5;
 }
@@ -144,6 +134,9 @@ export default {
 .feature-icon{
   font-size: 1.3em;
   vertical-align: middle;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
 }
 .feature-expand{
   float: right;
