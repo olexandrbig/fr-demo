@@ -49,8 +49,8 @@ html {
   padding: 14px 15px 13px;
   font-size: 12px;
   line-height: 1em;
-  background: #344C84;
-  border: 1px solid #344C84;
+  background: #7e1548;
+  border: 1px solid #7e1548;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -66,8 +66,8 @@ html {
 }
 .btn.btn-primary {
   color: #fff;
-  background: #44B49C;
-  border-color: #44B49C;
+  background: #3f3363;
+  border-color: #3f3363;
   text-decoration: none;
 }
 .btn.btn-toggle {
@@ -76,8 +76,8 @@ html {
 }
 .btn.btn-toggle.nuxt-link-exact-active {
   color: #fff;
-  background: #44B49C;
-  border-color: #44B49C;
+  background: #7e1548;
+  border-color: #7e1548;
   text-decoration: none;
 }
 .btn.btn-link {
@@ -120,6 +120,14 @@ select.form-control{
   text-indent: 10px;
   line-height: 39px;
   height: 41px;
+}
+.form-control-borderless,
+select.form-control-borderless{
+  border: none;
+  padding: 4px 0;
+  height: 24px;
+  line-height: 21px;
+  text-indent: 0;
 }
 .form-control-lg{
   min-width: 379px;
@@ -211,6 +219,9 @@ select.form-control{
 }
 .m-b-0{
   margin-bottom: 0!important;
+}
+.m-b-10{
+  margin-bottom: 10px;
 }
 .m-b-20 {
   margin-bottom: 20px;
@@ -460,4 +471,51 @@ pre code {
 .toasted.bubble .action{
   color:#ffffff!important;
   text-decoration: underline!important;
+}
+.panel{
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0 10px 0;
+}
+.view-title{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.right-actions{
+  position: absolute;
+  right: 0;
+  top: -10px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px 8px 8px 0;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.table-borderless td, .table-borderless th {
+  border: none;
+}
+
+.table-borderless tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.table-borderless tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.table-borderless tr:last-child {
+  border-bottom: none;
 }

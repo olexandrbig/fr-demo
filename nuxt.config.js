@@ -1,3 +1,7 @@
+const locale = process.env.NUXT_LOCALE || 'en'
+const locales = ['en']
+const base = process.env.APP_BASE_URL || 'https://olexandrbig.github.io/fr-demo/'
+
 export default {
   router: {
     mode: 'history'
@@ -71,8 +75,33 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/toast'
   ],
+
+  toast: {
+    position: 'top-center',
+    fullWidth: false,
+    theme: 'bubble',
+    duration: 2000,
+    singleton: false
+  },
+  manifest: {
+    lang: locale
+  },
+  robots: {
+    UserAgent: '*',
+    Sitemap: base + '/sitemap.xml'
+  },
+  sitemap: {
+    hostname: base,
+    i18n: {
+      defaultLocale: locale,
+      locales
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -89,6 +118,19 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: 'https://olexandrbig.github.io/fr-demo/'
+    publicPath: base
+  },
+
+  messages: {
+    loading: 'Loading...',
+    error_404: 'This page could not be found',
+    server_error: 'Server error',
+    nuxtjs: ' ',
+    back_to_home: 'Back to the home page',
+    server_error_details:
+      'An error occurred in the application and your page could not be served. If you are the application owner, check your logs for details.',
+    client_error: 'Error',
+    client_error_details:
+      'An error occurred while rendering the page. Check developer tools console for details.'
   }
 }

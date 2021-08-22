@@ -5,39 +5,29 @@
     </div>
     <ul class="site-modules">
       <li class="site-module">
-        <a href class="module-link">
+        <a class="module-link pointer" @click="featureIsNotAvailable()">
           <span class="module-icon"><fa :icon="['fas','search']" /></span>
         </a>
       </li>
-      <li class="site-module active">
-        <a href class="module-link">
-          <span class="module-icon"><fa :icon="['fas','book-open']" /></span>
-        </a>
-      </li>
-      <li class="site-module">
-        <a href class="module-link">
-          <span class="module-icon"><fa :icon="['fas','crown']" /></span>
-        </a>
-      </li>
-      <li class="site-module">
-        <a href class="module-link">
-          <span class="module-icon"><fa :icon="['fas','university']" /></span>
+      <li v-for="module in appData" :key="module.code" :class="isActiveModuleClass(module.code)" class="site-module">
+        <a class="module-link pointer" @click="activateModule(module.code)">
+          <span class="module-icon"><fa :icon="['fas', module.icon]" /></span>
         </a>
       </li>
     </ul>
     <ul class="site-modules site-modules-bottom">
       <li class="site-module">
-        <a href class="module-link">
+        <a class="module-link pointer" @click="featureIsNotAvailable()">
           <span class="module-icon"><fa :icon="['fas','users']" /></span>
         </a>
       </li>
       <li class="site-module">
-        <a href class="module-link">
+        <a class="module-link pointer" @click="featureIsNotAvailable()">
           <span class="module-icon"><fa :icon="['fas','heartbeat']" /></span>
         </a>
       </li>
       <li class="site-module">
-        <a href class="module-link">
+        <a class="module-link pointer" @click="featureIsNotAvailable()">
           <span class="module-icon"><fa :icon="['fas','sign-out-alt']" /></span>
         </a>
       </li>
@@ -52,7 +42,21 @@ export default {
   components: {
     Logo
   },
+  computed: {
+    appData () {
+      return this.$store.state.appData
+    }
+  },
   methods: {
+    featureIsNotAvailable () {
+      this.$toast.error('This feature is not yet available')
+    },
+    activateModule (moduleCode) {
+      this.$store.dispatch('activateModule', moduleCode)
+    },
+    isActiveModuleClass (moduleCode) {
+      return this.$store.state.activeModule === moduleCode ? 'active' : false
+    },
     mainHeight () {
       if (process.client) {
         return (window && window.innerHeight) - 30
@@ -73,7 +77,8 @@ export default {
   width: 60px;
   overflow-y: auto;
   overflow-x: hidden;
-  background: rebeccapurple;
+  background: #7e1548;
+  background: linear-gradient(0deg, #7e1548 0%, #3f3363 100%);
   position: relative;
 }
 .site-modules{

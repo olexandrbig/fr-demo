@@ -2,61 +2,70 @@
   <div>
     <div class="clearfix relative">
       <div class="pull-right right-actions">
-        <button class="btn btn-sm btn-primary">
+        <button class="btn btn-sm btn-primary" @click="featureIsNotAvailable()">
           Hierarchy
         </button>
-        <button class="btn btn-sm btn-primary">
+        <button class="btn btn-sm btn-primary" @click="featureIsNotAvailable()">
           Copy link
         </button>
-        <button class="btn btn-sm btn-default">
+        <button class="btn btn-sm btn-default" @click="featureIsNotAvailable()">
           Discard changes
         </button>
-        <button class="btn btn-sm btn-default">
+        <button class="btn btn-sm btn-default" @click="featureIsNotAvailable()">
           Refresh
         </button>
       </div>
       <h2 class="view-title">
-        <fa :icon="['fas','list']" /> Variants
+        <fa :icon="['fas', getViewIcon()]" /> {{ getViewName() }}
       </h2>
     </div>
     <div class="grid">
       <div class="col-1-3">
         <div class="panel">
-          <table>
+          <h3 class="m-b-10">
+            Basic user info
+          </h3>
+          <table class="table-borderless">
             <tr>
-              <th>Company</th>
-              <th>Contact</th>
-              <th>Country</th>
+              <td>First name</td>
+              <td>
+                <input class="form-control form-control-borderless" value="Francisco">
+              </td>
             </tr>
             <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
+              <td>Last name</td>
+              <td>
+                <input class="form-control form-control-borderless" value="Mendel">
+              </td>
             </tr>
             <tr>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
+              <td>Gender</td>
+              <td>
+                <select class="form-control form-control-borderless">
+                  <option value="" disabled>
+                    Gender
+                  </option>
+                  <option value="male" selected>
+                    Male
+                  </option>
+                  <option value="female">
+                    Female
+                  </option>
+                  <option value="other">
+                    other
+                  </option>
+                </select>
+              </td>
             </tr>
             <tr>
-              <td>Ernst Handel</td>
-              <td>Roland Mendel</td>
-              <td>Austria</td>
+              <td>Birth Date</td>
+              <td>
+                <input class="form-control form-control-borderless" value="1991-08-01" type="date">
+              </td>
             </tr>
             <tr>
-              <td>Island Trading</td>
-              <td>Helen Bennett</td>
-              <td>UK</td>
-            </tr>
-            <tr>
-              <td>Laughing Bacchus Winecellars</td>
-              <td>Yoshi Tannamuri</td>
-              <td>Canada</td>
-            </tr>
-            <tr>
-              <td>Magazzini Alimentari Riuniti</td>
-              <td>Giovanni Rovelli</td>
-              <td>Italy</td>
+              <td>Personal ID</td>
+              <td>FR12312355AD</td>
             </tr>
           </table>
         </div>
@@ -75,43 +84,43 @@
                 <th>Description</th>
               </tr>
               <tr>
-                <td><a href="/tags/tag_table.asp">&lt;table&gt;</a></td>
+                <td><a href>&lt;table&gt;</a></td>
                 <td>Defines a table</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_th.asp">&lt;th&gt;</a></td>
+                <td><a href>&lt;th&gt;</a></td>
                 <td>Defines a header cell in a table</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_tr.asp">&lt;tr&gt;</a></td>
+                <td><a href>&lt;tr&gt;</a></td>
                 <td>Defines a row in a table</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_td.asp">&lt;td&gt;</a></td>
+                <td><a href>&lt;td&gt;</a></td>
                 <td>Defines a cell in a table</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_caption.asp">&lt;caption&gt;</a></td>
+                <td><a href>&lt;caption&gt;</a></td>
                 <td>Defines a table caption</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_colgroup.asp">&lt;colgroup&gt;</a></td>
+                <td><a href>&lt;colgroup&gt;</a></td>
                 <td>Specifies a group of one or more columns in a table for formatting</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_col.asp">&lt;col&gt;</a></td>
+                <td><a href>&lt;col&gt;</a></td>
                 <td>Specifies column properties for each column within a &lt;colgroup&gt; element</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_thead.asp">&lt;thead&gt;</a></td>
+                <td><a href>&lt;thead&gt;</a></td>
                 <td>Groups the header content in a table</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_tbody.asp">&lt;tbody&gt;</a></td>
+                <td><a href>&lt;tbody&gt;</a></td>
                 <td>Groups the body content in a table</td>
               </tr>
               <tr>
-                <td><a href="/tags/tag_tfoot.asp">&lt;tfoot&gt;</a></td>
+                <td><a href>&lt;tfoot&gt;</a></td>
                 <td>Groups the footer content in a table</td>
               </tr>
             </tbody>
@@ -209,39 +218,35 @@ export default {
         { hid: 'og:image', property: 'og:image', content: this.$store.state.baseUrl + require('~/assets/pic/logo.png') }
       ]
     }
+  },
+  methods: {
+    getViewIcon () {
+      const { view } = this.getInfo(this.$store.state.activeView)
+      return view.icon
+    },
+    getViewName () {
+      const { view, module } = this.getInfo(this.$store.state.activeView)
+      return `${module.name} / ${view.name}`
+    },
+    getInfo (tab) {
+      const parts = tab.split(':')
+      const moduleCode = parts[0]
+      const viewCode = parts[1]
+      const subViewCode = parts[2]
+      const appData = this.$store.state.appData
+      const module = appData.find(m => m.code === moduleCode)
+      let view = null
+      if (subViewCode) {
+        const parent = module.views.find(v => v.code === viewCode)
+        view = parent.views.find(v => v.code === `${viewCode}:${subViewCode}`)
+      } else {
+        view = module.views.find(v => v.code === viewCode)
+      }
+      return { module, view }
+    },
+    featureIsNotAvailable () {
+      this.$toast.error('This feature is not yet available')
+    }
   }
 }
 </script>
-<style>
-  .panel{
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 10px 0 10px 0;
-  }
-  .view-title{
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-  .right-actions{
-    position: absolute;
-    right: 0;
-    top: -10px;
-  }
-
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-</style>

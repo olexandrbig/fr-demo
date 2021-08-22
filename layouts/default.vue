@@ -45,7 +45,6 @@ html, body, .app-root, #__nuxt, #__layout {
 }
 .site-footer {
   padding: 0 10px;
-  background: rgba(119,119,119,0.8);
   color: #ffffff;
   position: relative;
 }

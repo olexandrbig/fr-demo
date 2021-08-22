@@ -35,6 +35,10 @@ export default {
   margin-top: 8px;
   margin-bottom: 0;
 }
+.site-footer{
+  background: #7e1548;
+  background: linear-gradient(90deg, #7e1548 0%, #3f3363 100%);
+}
 .site-footer a{
   color: #ffffff;
 }

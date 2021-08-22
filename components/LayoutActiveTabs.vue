@@ -1,33 +1,12 @@
 <template>
   <section class="active-tabs">
     <ul class="active-tab-list">
-      <li class="active-tab">
-        <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','th-large']" /></span>
-          <span>Overview</span>
+      <li v-for="tab in tabs" :key="tab" :class="isActiveViewClass(tab)" class="active-tab">
+        <a class="active-tab-link pointer" @click="activateTab(tab)">
+          <span class="active-tab-icon"><fa :icon="['fas', getTabIcon(tab)]" /></span>
+          <span>{{ getTabName(tab) }}</span>
         </a>
-        <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
-      </li>
-      <li class="active-tab active">
-        <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','list']" /></span>
-          <span>Variants</span>
-        </a>
-        <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
-      </li>
-      <li class="active-tab">
-        <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','directions']" /></span>
-          <span>Turnout report</span>
-        </a>
-        <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
-      </li>
-      <li class="active-tab">
-        <a href class="active-tab-link">
-          <span class="active-tab-icon"><fa :icon="['fas','wind']" /></span>
-          <span>Cashflow report</span>
-        </a>
-        <span class="active-tab-close pointer"><fa :icon="['fas','times']" /></span>
+        <span class="active-tab-close pointer" @click="closeTab(tab)"><fa :icon="['fas','times']" /></span>
       </li>
     </ul>
   </section>
@@ -36,7 +15,48 @@
 <script>
 export default {
   name: 'LayoutActiveTabs',
+  computed: {
+    tabs () {
+      return this.$store.state.tabs
+    }
+  },
   methods: {
+    activateTab (tab) {
+      const { view, module } = this.getInfo(tab)
+      this.$store.dispatch('activateTab', `${module.code}:${view.code}`)
+    },
+    closeTab (tab) {
+      const { view, module } = this.getInfo(tab)
+      this.$store.dispatch('closeTab', `${module.code}:${view.code}`)
+    },
+    isActiveViewClass (tab) {
+      const { view, module } = this.getInfo(tab)
+      return this.$store.state.activeView === `${module.code}:${view.code}` ? 'active' : ''
+    },
+    getTabIcon (tab) {
+      const { view } = this.getInfo(tab)
+      return view.icon
+    },
+    getTabName (tab) {
+      const { view } = this.getInfo(tab)
+      return view.name
+    },
+    getInfo (tab) {
+      const parts = tab.split(':')
+      const moduleCode = parts[0]
+      const viewCode = parts[1]
+      const subViewCode = parts[2]
+      const appData = this.$store.state.appData
+      const module = appData.find(m => m.code === moduleCode)
+      let view = null
+      if (subViewCode) {
+        const parent = module.views.find(v => v.code === viewCode)
+        view = parent.views.find(v => v.code === `${viewCode}:${subViewCode}`)
+      } else {
+        view = module.views.find(v => v.code === viewCode)
+      }
+      return { module, view }
+    },
     mainHeight () {
       if (process.client) {
         return (window && window.innerHeight) - 80
@@ -51,6 +71,7 @@ export default {
   float: left;
   width: 100%;
   background: #ffffff;
+  height: 30px;
 }
 .active-tab-list{
   list-style: none;
