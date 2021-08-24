@@ -14,7 +14,8 @@ export const state = () => ({
       {
         code: 'OVERVIEW',
         name: 'Overview',
-        icon: 'th-large'
+        icon: 'th-large',
+        type: 'pageA'
       },
       {
         code: 'PRODUCT',
@@ -23,21 +24,25 @@ export const state = () => ({
         views: [{
           code: 'PRODUCT:VARIANTS',
           name: 'Variants',
-          icon: 'list'
+          icon: 'list',
+          type: 'pageB'
         }, {
           code: 'PRODUCT:VERSIONS',
           name: 'Versions',
-          icon: 'tasks'
+          icon: 'tasks',
+          type: 'pageC'
         }, {
           code: 'PRODUCT:BALANCE',
           name: 'Balance',
-          icon: 'balance-scale'
+          icon: 'balance-scale',
+          type: 'pageD'
         }]
       },
       {
         code: 'DRAFTS',
         name: 'Drafts',
-        icon: 'pencil-ruler'
+        icon: 'pencil-ruler',
+        type: 'pageE'
       }
     ]
   }, {
@@ -48,12 +53,14 @@ export const state = () => ({
       {
         code: 'OVERVIEW',
         name: 'Overview',
-        icon: 'th-large'
+        icon: 'th-large',
+        type: 'pageA'
       },
       {
         code: 'DRAFTS',
         name: 'Drafts',
-        icon: 'pencil-ruler'
+        icon: 'pencil-ruler',
+        type: 'pageE'
       }
     ]
   }, {
@@ -64,7 +71,8 @@ export const state = () => ({
       {
         code: 'OVERVIEW',
         name: 'Overview',
-        icon: 'th-large'
+        icon: 'th-large',
+        type: 'pageA'
       }
     ]
   }],
